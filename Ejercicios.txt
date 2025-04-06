@@ -1,0 +1,30 @@
+Hashing
+
+Ejercicio 105. Explique qué es una función hash.
+Una función hash es un método que toma un dato (como un número o una cadena) y lo convierte en otro valor, normalmente un número entero, que representa una posición en una tabla. Sirve para ubicar y acceder a los datos rápidamente.
+
+Ejercicio 106. Explique qué función hash utiliza Java para objetos de la clase Integer.
+Java utiliza el valor entero como su propio código hash. Es decir, Integer.hashCode() simplemente devuelve el mismo número que representa el objeto.
+
+Ejercicio 107. Explique qué función hash utiliza Java para objetos de la clase String.
+Java calcula el hash de una cadena sumando los valores de sus caracteres multiplicados por potencias de 31.
+Por ejemplo, para la cadena "abc", el hash es:
+'a'*31² + 'b'*31¹ + 'c'*31⁰.
+
+Ejercicio 108. Explique cómo puede implementarse un map mediante hashing.
+Un map se puede implementar usando una tabla hash donde cada clave se convierte en una posición mediante una función hash. En esa posición se guarda el valor asociado. Si hay colisiones (dos claves con el mismo hash), se manejan con listas o redispersión.
+
+Ejercicio 109. Explique cómo puede implementarse un conjunto mediante hashing.
+Un conjunto (set) puede usarse como una tabla hash donde solo se almacenan claves, sin valores. Cada elemento se guarda según su código hash, y se asegura que no haya duplicados.
+
+Ejercicio 110. Explique por qué Java aumenta el tamaño máximo de una tabla hash antes de que se llene.
+Java aumenta el tamaño para evitar muchas colisiones. Si la tabla está muy llena, muchos elementos pueden terminar en la misma posición, haciendo más lenta la búsqueda. Al aumentar el tamaño, se distribuyen mejor.
+
+Ejercicio 111. Explique por qué Java recoloca los elementos de una tabla hash cuando ésta aumenta de tamaño.
+Cuando se aumenta el tamaño de la tabla, cambian las posiciones donde deberían estar los elementos según su nuevo código hash. Por eso, es necesario mover (rehash) los elementos a sus nuevas posiciones.
+
+Ejercicio 112. Explique por qué es conveniente especificar el tamaño inicial de una HashSet o de un HashMap cuando se espera que éste sea grande.
+Si ya se sabe que va a tener muchos elementos, es mejor definir el tamaño inicial para evitar que Java tenga que redimensionar la tabla varias veces, lo cual es costoso en tiempo.
+
+Ejercicio 113. ¿Qué consecuencias tiene el no reescribir el método hashCode cuando se define un tipo de elemento para un HashSet o HashMap?
+Si no se redefine hashCode, dos objetos que parecen iguales podrían tener códigos hash distintos, y no se reconocerán como iguales dentro de un HashSet o HashMap. Esto puede causar errores o duplicados no deseados
